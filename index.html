@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kunal – Full Stack Developer (MERN)</title>
+<meta name="description" content="Portfolio of Kunal, a full stack web developer building MERN applications from UI to database to live deployment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f6f4; --surface:#ffffff; --ink:#13231c; --muted:#4d6258; --line:#cfdcd5;
+  --accent:#0f7a4d; --accent-ink:#ffffff; --key:#0f7a4d; --str:#9a5b00; --num:#2a5db0;
+  --doc:#0f1d17; --doc-ink:#d6e8de; --doc-key:#5fd6a0; --doc-str:#f0c36b; --doc-dim:#7f9a8c;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c1511; --surface:#121f19; --ink:#e4efe8; --muted:#97ada1; --line:#25382f;
+    --accent:#4ad394; --accent-ink:#06150d; --doc:#070e0b; --doc-ink:#d6e8de;
+  }
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:-.02em}
+nav a{margin-left:22px;text-decoration:none;color:var(--muted);font-size:.95rem}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:56px 0 88px}
+h1{font-size:clamp(2.8rem,7vw,5.2rem);line-height:.98;letter-spacing:-.04em;font-weight:800;margin:0 0 22px}
+.lede{font-size:1.2rem;color:var(--muted);max-width:34ch;margin:0 0 30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--ink);border-color:var(--line)}
+.btn:hover{border-color:var(--accent)}
+.doc{background:var(--doc);color:var(--doc-ink);border-radius:14px;padding:22px 24px;font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-size:.84rem;line-height:1.75;overflow-x:auto;box-shadow:0 24px 50px -28px rgba(0,0,0,.55)}
+.doc .bar{color:var(--doc-dim);margin-bottom:10px;font-size:.78rem}
+.doc .k{color:var(--doc-key)} .doc .s{color:var(--doc-str)} .doc .d{color:var(--doc-dim)}
+.doc pre{margin:0;white-space:pre}
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:-.03em;line-height:1.1;margin:0 0 36px;font-weight:800}
+.proj{display:grid;grid-template-columns:240px 1fr;gap:12px 40px;padding:30px 0;border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:0;padding-top:0}
+.proj h3{margin:0 0 6px;font-size:1.45rem;letter-spacing:-.02em}
+.proj .kind{color:var(--muted);margin:0;font-size:.95rem}
+.proj p{margin:0 0 12px;max-width:62ch}
+.problem{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tags span{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.78rem;padding:4px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.links a{margin-right:20px;font-weight:600;color:var(--accent)}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 48px}
+.skills h3{margin:0 0 8px;font-size:1.05rem}
+.skills p{margin:0;color:var(--muted)}
+.role{display:grid;grid-template-columns:240px 1fr;gap:12px 40px}
+.role h3{margin:0;font-size:1.3rem}
+.role .when{color:var(--muted);margin:2px 0 0}
+.role ul{margin:0;padding-left:20px;max-width:64ch}
+.role li{margin-bottom:12px}
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:44px}
+.edu h3{margin:0 0 10px;font-size:1.05rem}
+.edu p,.edu li{margin:0 0 8px;color:var(--muted)}
+.edu ul{padding-left:18px;margin:0}
+.contact{text-align:left}
+.contact .mail{font-size:clamp(1.5rem,4.5vw,2.8rem);font-weight:800;letter-spacing:-.03em;text-decoration:none;border-bottom:4px solid var(--accent);word-break:break-all}
+.contact p{color:var(--muted);margin:22px 0 0}
+footer{padding:28px 0 40px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;gap:36px;padding-top:28px}
+  .proj,.role,.edu,.skills{grid-template-columns:1fr}
+  nav a{margin-left:14px}
+  section{padding:52px 0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top">Kunal</a>
+    <nav aria-label="Sections">
+      <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1>Kunal builds full stack web apps.</h1>
+        <p class="lede">MERN developer from Rewari, Haryana. I take an app from UI design to database, login and live deployment.</p>
+        <div class="btns">
+          <a class="btn primary" href="#projects">See my projects</a>
+          <a class="btn ghost" href="mailto:kunal181003@gmail.com">Email me</a>
+        </div>
+      </div>
+      <div class="doc" role="img" aria-label="A MongoDB-style document summarising Kunal: full stack developer, MERN stack, based in Rewari, open to work.">
+        <div class="bar">developers / kunal</div>
+<pre>{
+  <span class="k">"name"</span>: <span class="s">"Kunal"</span>,
+  <span class="k">"role"</span>: <span class="s">"Full Stack Developer"</span>,
+  <span class="k">"stack"</span>: [
+    <span class="s">"MongoDB"</span>, <span class="s">"Express"</span>,
+    <span class="s">"React"</span>, <span class="s">"Node.js"</span>
+  ],
+  <span class="k">"deployed_on"</span>: [<span class="s">"Vercel"</span>, <span class="s">"Render"</span>],
+  <span class="k">"projects"</span>: <span class="s">3</span>,
+  <span class="k">"location"</span>: <span class="s">"Rewari, Haryana"</span>,
+  <span class="k">"openToWork"</span>: <span class="s">true</span>
+}</pre>
+      </div>
+    </div>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <article class="proj">
+        <div>
+          <h3>HireLane</h3>
+          <p class="kind">Job portal</p>
+        </div>
+        <div>
+          <p class="problem">Job seekers and recruiters need different workflows. One shared interface makes hiring clumsy and unsecured.</p>
+          <p>A MERN portal with role-based login. Candidates browse jobs and apply with a resume upload. Recruiters post and manage their listings.</p>
+          <div class="tags"><span>MongoDB</span><span>Express.js</span><span>React</span><span>Node.js</span><span>Vercel</span></div>
+          <div class="links"><a href="https://github.com/Kunal-1810/HireLane">GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div>
+          <h3>The Clothing Loop</h3>
+          <p class="kind">Online clothing store</p>
+        </div>
+        <div>
+          <p class="problem">Shoppers need an easy way to find products across categories and place orders. The store needs secure user accounts.</p>
+          <p>A full stack store with Men, Women and Kids categories, product search and order placement. Registration, login and sessions run on a Mongoose User model, and shared Handlebars partials keep every page consistent.</p>
+          <div class="tags"><span>Node.js</span><span>Express</span><span>Handlebars</span><span>MongoDB</span><span>Mongoose</span><span>Vercel</span></div>
+          <div class="links"><a href="https://github.com/Kunal-1810/Clothing-website">GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div>
+          <h3>Travel Lykke</h3>
+          <p class="kind">Travel agency website</p>
+        </div>
+        <div>
+          <p class="problem">Travel sites often scatter bookings, login and information across disconnected pages, so navigation gets confusing.</p>
+          <p>A multi-page React site with Home, My Bookings, Login and About pages. A shared top navigation bar keeps the experience consistent.</p>
+          <div class="tags"><span>React</span><span>JavaScript</span><span>CSS</span><span>Vercel</span></div>
+          <div class="links"><a href="https://github.com/Kunal-1810">GitHub profile</a></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div><h3>Frontend</h3><p>HTML, CSS3, JavaScript, React, Handlebars, responsive layouts</p></div>
+        <div><h3>Backend</h3><p>Node.js, Express.js, REST-style routes, session-based authentication</p></div>
+        <div><h3>Database</h3><p>MongoDB, Mongoose, MongoDB Atlas, MongoDB Compass</p></div>
+        <div><h3>Tools and deployment</h3><p>Git, GitHub, Vercel, Render, VS Code, Google Search Console</p></div>
+        <div><h3>Digital marketing</h3><p>SEO (on-page, technical basics, off-page) and Meta Ads campaigns on Facebook and Instagram, so the sites I build are fast and easy to find.</p></div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="role">
+        <div>
+          <h3>Web Developer</h3>
+          <p class="when">Inclination IT Innovation Pvt. Ltd.<br>July 2026 to present</p>
+        </div>
+        <ul>
+          <li>Built reusable UI components in React and connected them to Node and Express APIs. Fixed deployment and database connection issues on Vercel and MongoDB Atlas.</li>
+          <li>Developed REST-style API routes and Mongoose schemas for users, products and orders. Implemented session-based authentication and responsive layouts, using Git and GitHub for version control.</li>
+        </ul>
+      </div>
+
+      <div class="edu">
+        <div>
+          <h3>Education</h3>
+          <p>B.Tech Computer Science (AI)<br>Poornima College of Engineering, 2022 to 2026</p>
+        </div>
+        <div>
+          <h3>Certificates</h3>
+          <ul>
+            <li>JavaScript, Devyut Softech Private Limited (15-day internship)</li>
+            <li>Java, Promodaddy Digital Marketing (45-day internship)</li>
+            <li>DSA with Java, Poornima College of Engineering (30-hour course)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Looking for a Full Stack Developer role?</h2>
+      <a class="mail" href="mailto:kunal181003@gmail.com">kunal181003@gmail.com</a>
+      <p>Rewari, Haryana. Find my code on <a href="https://github.com/Kunal-1810">GitHub</a>.</p>
+    </section>
+  </main>
+
+  <footer>© 2026 Kunal</footer>
+</div>
+</body>
+</html>
